@@ -10,7 +10,7 @@ const createUserTable = () => {
         updated_at TIMESTAMP DEFAULT NOW())
         `;
   try {
-    const res = pool.query(queryText);
+    pool.query(queryText);
     console.log("users table created if not exists");
   } catch (err) {
     console.log("Error creating user table :", err);

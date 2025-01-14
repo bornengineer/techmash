@@ -10,10 +10,17 @@ const pool = new Pool({
   database: process.env.DB_NAME,
   port: process.env.DB_PORT,
   host: process.env.DB_HOST,
+  idleTimeoutMillis: 30000, // Close idle connections after 30 seconds
+  connectionTimeoutMillis: 2000,
+  max: 10, // Maximum number of connections in the pool
 });
 
 pool.on("connect", () => {
   console.log("Connection pool established with Database!");
+});
+
+pool.on("error", (err) => {
+  console.error("Unexpected error on idle client", err);
 });
 
 export default pool;

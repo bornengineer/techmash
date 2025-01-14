@@ -57,7 +57,7 @@ export const deleteUser = async (req, res) => {
   }
 };
 
-export const updateUser = async (req, res) => {
+export const updateUser = async (req, res, next) => {
   const { name, email } = req.body;
   try {
     const updatedUser = await updateUserService(req.params.id, name, email);
