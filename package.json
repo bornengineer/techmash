@@ -1,12 +1,12 @@
 {
-  "name": "exp-pg-user-mgmt-crud",
+  "name": "techmash",
   "version": "1.0.0",
   "description": "user management crud api using node, express, postgres & docker",
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node src/index.js",
-    "dev": "nodemon src/index.js",
+    "start": "node backend/index.js",
+    "dev": "nodemon backend/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Amaan Khan (bornengineer)",
@@ -15,7 +15,9 @@
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
+    "fs": "^0.0.1-security",
     "joi": "^17.13.3",
+    "path": "^0.12.7",
     "pg": "^8.13.1"
   },
   "devDependencies": {

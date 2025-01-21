@@ -2,26 +2,26 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import pool from "./config/db.js";
-import userRoutes from "./routes/userRoutes.js";
+import rankingRoutes from "./routes/ranking.route.js";
 import errorHandling from "./middlewares/errorHandler.js";
-import createUserTable from "./data/createUserTable.js";
+import { createRankingTable } from "./data/createRankingTable.js";
 
 dotenv.config();
 const app = express();
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 5000;
 
 // Middlewares
 app.use(express.json());
 app.use(cors());
 
 // Routes
-app.use("/api", userRoutes);
+app.use("/api", rankingRoutes);
 
 // Error handling middleware
 app.use(errorHandling);
 
-// Create users table before starting the server
-createUserTable()
+// Create ranking table before starting the server
+await createRankingTable();
 
 // Test db connection
 app.get("/", async (req, res) => {
