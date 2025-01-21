@@ -1,7 +1,7 @@
 {
   "name": "techmash",
   "version": "1.0.0",
-  "description": "user management crud api using node, express, postgres & docker",
+  "description": "Ranking languages based on the ratings they get from users",
   "main": "index.js",
   "type": "module",
   "scripts": {
