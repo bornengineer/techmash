@@ -97,24 +97,38 @@ export const calculateResultService = async (winnerId, loserId) => {
  * @returns {Promise<Array>} Array containing rows with name and rating.
  */
 export const getLeaderboardService = async (limit = null) => {
-  // Prepare the base query
-  let query = `
+  // Base query for leaderboard data
+  let dataQuery = `
     SELECT name, rating
     FROM ranking_table
     ORDER BY rating DESC
   `;
 
-  // Append a LIMIT clause if a limit is specified
   const queryParams = [];
   if (limit) {
-    query += " LIMIT $1";
+    dataQuery += " LIMIT $1";
     queryParams.push(limit);
   }
 
+  // Query to get total count of rows
+  const countQuery = `
+    SELECT COUNT(*) AS total_count
+    FROM ranking_table
+  `;
+
   try {
-    // Execute the query
-    const result = await pool.query(query, queryParams);
-    return result.rows; // Return the fetched rows
+    // Execute both queries
+    const dataResult = await pool.query(dataQuery, queryParams);
+    const countResult = await pool.query(countQuery);
+
+    // Extract total count
+    const totalCount = parseInt(countResult.rows[0].total_count, 10);
+
+    // Return data and total count
+    return {
+      data: dataResult.rows,
+      totalCount,
+    };
   } catch (error) {
     console.error("Error fetching leaderboard:", error);
     throw new Error("Failed to fetch leaderboard from the ranking_table.");

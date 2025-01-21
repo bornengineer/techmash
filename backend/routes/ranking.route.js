@@ -7,9 +7,9 @@ import {
 
 const router = express.Router();
 
-router.get("/pair", fetchRandomPair);
+router.get("/get-pair", fetchRandomPair);
 
-router.post("/rate", calculateResult);
+router.post("/rate-players", calculateResult);
 
 router.get("/leaderboard", getLeaderboard);
 
