@@ -12,6 +12,7 @@ import {
   CircularProgress,
   Button,
 } from "@mui/material";
+import LeaderboardIcon from "@mui/icons-material/Leaderboard";
 import { fetchLeaderboard } from "../services/api"; // Assuming you have the API service set up
 
 const Leaderboard = () => {
@@ -35,13 +36,13 @@ const Leaderboard = () => {
   }, [limit]);
 
   return (
-    <Box sx={{ p: 3, textAlign: "center" }}>
+    <Box sx={{ p: { xs: 1.5, sm: 3 }, textAlign: "center" }}>
       {/* Title */}
       <Typography
         variant="h4"
         sx={{ mb: 3, fontWeight: "bold", color: "#B71C1C" }}
       >
-        Leaderboard
+        <LeaderboardIcon fontSize="20px" sx={{ mb: "-4px" }} /> Leaderboard
       </Typography>
 
       {/* Table */}
@@ -53,7 +54,12 @@ const Leaderboard = () => {
         <>
           <TableContainer
             component={Paper}
-            sx={{ maxWidth: 800, margin: "0 auto", boxShadow: 3 }}
+            sx={{
+              maxWidth: 600,
+              margin: "0 auto",
+              boxShadow: 3,
+              border: "1px solid #00000020",
+            }}
           >
             <Table>
               <TableHead sx={{ borderBottom: "3px solid #00000015" }}>
