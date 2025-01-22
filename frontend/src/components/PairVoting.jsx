@@ -9,6 +9,7 @@ import {
   Stack,
   Container,
   Box,
+  Button,
 } from "@mui/material";
 
 function PairVoting() {
@@ -71,17 +72,26 @@ function PairVoting() {
           sx={{
             mb: { xs: 3, sm: 8 },
             textAlign: "center",
-            color: "#2da1bc",
-            cursor: "pointer",
-            "&:hover": {
-              textDecoration: "underline",
-            },
-          }}
-          onClick={() => {
-            fetchNewPair();
+            color: "grey",
           }}
         >
-          Not sure? Refresh choices!
+          Not sure?
+          <Button
+            onClick={() => {
+              fetchNewPair();
+            }}
+            variant="outlined"
+            size="small"
+            sx={{
+              textTransform: "capitalize",
+              padding: "6px 10px",
+              ml: "10px",
+              height: "30px",
+              width: "140px",
+            }}
+          >
+            Refresh choices
+          </Button>
         </Typography>
 
         <Stack
