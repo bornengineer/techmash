@@ -1,4 +1,4 @@
-import { Stack, Typography } from "@mui/material";
+import { Link, Stack, Typography } from "@mui/material";
 import React from "react";
 
 const Footer = () => {
@@ -11,9 +11,18 @@ const Footer = () => {
         justifyContent: "center",
         alignItems: "center",
         mt: "0.5rem",
+        flexDirection: "row",
+        gap: 1,
       }}
     >
-      <Typography sx={{ color: "grey" }}>Made with ❣️ by Amaan</Typography>
+      <Typography sx={{ color: "grey" }}>Made with ❣️ by </Typography>
+      <Link
+        href="https://github.com/bornengineer"
+        sx={{ fontSize: "17px", color: "grey" }}
+        target="_blank"
+      >
+        MAK
+      </Link>
     </Stack>
   );
 };
